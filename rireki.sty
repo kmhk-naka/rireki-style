@@ -26,6 +26,7 @@
 %	rireki.sty	Version 2.9
 %
 \typeout{`Rireki style(B5)'}
+\usepackage{setspace}
 %\usepackage[dvipdfmx]{graphicx}	% lualatex でも使えるようにrireki.tex に移動
 %----------------------------------------------------------------------------
 %
@@ -187,18 +188,14 @@
 %
 % 学歴職歴リスト編集
 %
-\def\履歴リスト１行の高さ{7.68421}
-\def\履歴リスト前半行数{19}
-\def\履歴リスト後半行数{4}
+\def\履歴リスト１行の高さ{6.68421}
+\def\履歴リスト前半行数{14}
 \def\履歴説明幅{124.5}
 \newcount\linecount\linecount=0
 \def\@履歴リスト前半{}
-\def\@履歴リスト後半{}
 \def\リスト振り分け#1{
 	\advance \linecount by 1
-	\ifnum\linecount>\履歴リスト前半行数
-		\追加\@履歴リスト後半{#1}
-	\else
+	\ifnum\linecount<\履歴リスト前半行数
 		\追加\@履歴リスト前半{#1}
 	\fi
 }
@@ -295,14 +292,18 @@
 \def\現住所電話番号#1{\def\@現住所電話番号{#1}}
 \def\現住所呼び出し#1{\def\@現住所呼び出し{#1}}
 %
+% 帰省先
+%
+\def\帰省先郵便番号#1{\def\@帰省先郵便番号{#1}}
+\def\帰省先#1{\def\@帰省先{#1}}
+\def\帰省先読み#1{\def\@帰省先読み{#1}}
+\def\帰省先市外局番#1{\def\@帰省先市外局番{#1}}
+\def\帰省先電話番号#1{\def\@帰省先電話番号{#1}}
+\def\帰省先呼び出し#1{\def\@帰省先呼び出し{#1}}
+%
 % 連絡先
 %
-\def\連絡先郵便番号#1{\def\@連絡先郵便番号{#1}}
 \def\連絡先#1{\def\@連絡先{#1}}
-\def\連絡先読み#1{\def\@連絡先読み{#1}}
-\def\連絡先市外局番#1{\def\@連絡先市外局番{#1}}
-\def\連絡先電話番号#1{\def\@連絡先電話番号{#1}}
-\def\連絡先呼び出し#1{\def\@連絡先呼び出し{#1}}
 %
 % 学歴、職歴、資格
 %
@@ -314,18 +315,15 @@
 % 個人情報
 %
 \long\def\志望の動機#1{\def\@志望の動機{#1}}
+\long\def\卒業研究#1{\def\@卒業研究{#1}}
+\long\def\自己ＰＲ#1{\def\@自己ＰＲ{#1}}
+\long\def\得意分野#1{\def\@得意分野{#1}}
+\long\def\趣味#1{\def\@趣味{#1}}
 \def\得意な学科#1{\def\@得意な学科{#1}}		% 旧版との互換性のため
 \def\趣味#1{\def\@趣味{#1}}			% 旧版との互換性のため
 \def\スポーツ#1{\def\@スポーツ{#1}}		% 旧版との互換性のため
 \def\健康状態#1{\def\@健康状態{#1}}		% 旧版との互換性のため
 \long\def\本人希望記入欄#1{\def\@本人希望記入欄{#1}}
-%
-% その他
-%
-\def\通勤時間#1{\def\@通勤時間{#1}}
-\def\扶養家族数#1{\def\@扶養家族数{#1}}
-\def\配偶者#1{\def\@配偶者{#1}}
-\def\配偶者の扶養義務#1{\def\@配偶者の扶養義務{#1}}
 %
 % 保護者
 %
@@ -338,7 +336,7 @@
 \def\保護者電話番号#1{\def\@保護者電話番号{#1}}
 \def\保護者呼び出し#1{\def\@保護者呼び出し{#1}}
 
-\def\サイン#1{\def\@サイン{#1}}
+\def\サイン{福岡工業大学}
 %----------------------------------------------------------------------------
 %
 % 書き出しページの内容
@@ -350,6 +348,7 @@
 \def\枠の幅{149.5}
 \def\名前欄の幅{98}
 \def\住所欄の幅{117}
+\def\連絡先欄の高さ{7}
 \def\ふりがな欄の高さ{5}
 \def\写真縦{40}
 \def\写真横{30}
@@ -365,7 +364,7 @@
 %----------------
 % 大枠
 \SetPos(0,0) {
-	\def\枠の高さ{66.5}
+	\def\枠の高さ{73}
 	\Put(0,-1){\makebox(25,5)[t]{\Large \bf 履\hspace{5mm}歴\hspace{5mm}書}}
 	\Put(70,-1){\makebox(25,3)[t]{\scriptsize \@現在日付 現在}}
 	\Sub{\写真横}{2}{\w}
@@ -383,7 +382,7 @@
 	\Put(-0.25,\枠の高さ){\line(1,0){\w}}
 	\Put(\名前欄の幅,0){\line(0,-1){31.5}}
 	\Put(\名前欄の幅,31.31){\line(1,0){51.75}}
-	\Put(\枠の幅,31.0){\line(0,-1){35.5}}
+	\Put(\枠の幅,31.0){\line(0,-1){42}}
 	%
 	\linethickness{0.1mm}
 	\Put(0,5){\dashbox{.5}(\名前欄の幅,\ふりがな欄の高さ)[l]{\scriptsize \hspace{2mm}ふりがな}}
@@ -430,28 +429,33 @@
 }
 \SetPos(0,49) {
 	\Put(0,0){\line(1,0){\枠の幅}}
-	\Put(0,\ふりがな欄の高さ){\dashbox{.5}(\住所欄の幅,\ふりがな欄の高さ)[l]{\scriptsize \hspace{2mm}ふりがな \hspace{10mm} \@連絡先読み}}
-	\Put(0,10){\makebox(\住所欄の幅,5)[l]{\scriptsize \hspace{2mm}連\hspace{1mm}絡\hspace{1mm}先\hspace{3mm}〒\hspace{2mm}\@連絡先郵便番号}}
-	\Put(0,17.5){\makebox(\住所欄の幅,11.5)[c]{\normalsize \@連絡先}}
+	\Put(0,\ふりがな欄の高さ){\dashbox{.5}(\住所欄の幅,\ふりがな欄の高さ)[l]{\scriptsize \hspace{2mm}ふりがな \hspace{10mm} \@帰省先読み}}
+	\Put(0,10){\makebox(\住所欄の幅,5)[l]{\scriptsize \hspace{2mm}帰\hspace{1mm}省\hspace{1mm}先\hspace{3mm}〒\hspace{2mm}\@帰省先郵便番号}}
+	\Put(0,17.5){\makebox(\住所欄の幅,11.5)[c]{\normalsize \@帰省先}}
 }
 \SetPos(\住所欄の幅,49) {
 	\Put(0,3.5){\makebox(32.5,3.5)[l]{\scriptsize \hspace{2mm}電話}}
 	\def\@editbuf{
 		\normalsize
-		\ifx\@連絡先市外局番\empty\else
-			{\hspace{2mm}(\hspace{1mm}\@連絡先市外局番\hspace{1mm})}
+		\ifx\@帰省先市外局番\empty\else
+			{\hspace{2mm}(\hspace{1mm}\@帰省先市外局番\hspace{1mm})}
 		\fi
 	}
 	\Put(0,7){\makebox(32.5,3.5)[l]{\scriptsize \hspace{2mm}市外局番\@editbuf}}
-	\Put(0,12){\dashbox{.5}(32.5,5)[c]{\normalsize \@連絡先電話番号}}
-	\Put(0,17){\makebox(32.5,5)[c]{\normalsize \@連絡先呼び出し}}
+	\Put(0,12){\dashbox{.5}(32.5,5)[c]{\normalsize \@帰省先電話番号}}
+	\Put(0,17){\makebox(32.5,5)[c]{\normalsize \@帰省先呼び出し}}
+}
+\SetPos(0,66.5) {
+	\Put(0,0){\line(1,0){\枠の幅}}
+	\Put(0,\連絡先欄の高さ){\makebox(13,\連絡先欄の高さ)[c]{\scriptsize E-mail}}
+	\Put(0,3.5){\makebox(\枠の幅,0)[c]{\normalsize \@連絡先}}
 }
 %----------------
 % 学歴職歴
 %----------------
 % 大枠
-\SetPos(0,68.0) {
-	\def\枠の高さ{152}
+\SetPos(0,78) {
+	\def\枠の高さ{100}
 	\def\見出しの高さ{6}
 	\ThickBox(\枠の幅,\枠の高さ)
 	\Put(0,\見出しの高さ){\makebox(17,\見出しの高さ)[c]{\scriptsize 年}}
@@ -463,99 +467,102 @@
 	\Add{6}{\履歴リスト１行の高さ}{\offset}
 	\リスト書き出し\@履歴リスト前半\履歴リスト前半行数
 }
-\end{picture}
-
-\newpage
-
-\def\ROOT@X{12.5}			% 2ページ目の原点
-\def\ROOT@Y{24}				% 2ページ目の原点
-\begin{picture}(\width,\height)		% B5 = (182x257mm)
-%----------------
-% 学歴・職歴(続き)
-%----------------
-\SetPos(0,0) {
-	\def\枠の高さ{37}
-	\def\見出しの高さ{6}
-	\ThickBox(\枠の幅,\枠の高さ)
-	\Put(0,\見出しの高さ){\makebox(17,\見出しの高さ)[c]{\scriptsize 年}}
-	\Put(17,\見出しの高さ){\makebox(8,\見出しの高さ)[c]{\scriptsize 月}}
-	\Put(24,\見出しの高さ){\makebox(\履歴説明幅,\見出しの高さ)[c]{\scriptsize 学歴・職歴（各別にまとめて書く）}}
-	\MultiPut(0,\見出しの高さ)(0,-\履歴リスト１行の高さ){4}{\line(1,0){\枠の幅}}
-	\Put(25,0){\line(0,-1){\枠の高さ}}
-	\Put(0,\枠の高さ){\dashbox{.5}(17,\枠の高さ)}
-	\def\offset{14}
-	\リスト書き出し\@履歴リスト後半\履歴リスト後半行数
-}
-%----------------
+%--------
 % 免許・資格
 %----------------
-\SetPos(0,38.5) {
-	\def\枠の高さ{75}
+\SetPos(0,183.5) {
+	\def\枠の高さ{33.23}
 	\def\見出しの高さ{6}
 	\ThickBox(\枠の幅,\枠の高さ)
 	\Put(0,\見出しの高さ){\makebox(17,\見出しの高さ)[c]{\scriptsize 年}}
 	\Put(17,\見出しの高さ){\makebox(8,\見出しの高さ)[c]{\scriptsize 月}}
 	\Put(24,\見出しの高さ){\makebox(\履歴説明幅,\見出しの高さ)[c]{\scriptsize 免許・資格}}
-	\MultiPut(0,\見出しの高さ)(0,-\履歴リスト１行の高さ){9}{\line(1,0){\枠の幅}}
+	\MultiPut(0,\見出しの高さ)(0,-\履歴リスト１行の高さ){4}{\line(1,0){\枠の幅}}
 	\Put(25,0){\line(0,-1){\枠の高さ}}
 	\Put(0,\枠の高さ){\dashbox{.5}(17,\枠の高さ)}
 	\def\offset{14}
-	\リスト書き出し\@資格リスト{9}
+	\リスト書き出し\@資格リスト{4}
+}
+\end{picture}
+
+\newpage
+\def\ROOT@X{12.5}			% 2ページ目の原点
+\def\ROOT@Y{24}				% 2ページ目の原点
+\begin{picture}(\width,\height)		% B5 = (182x257mm)
+
+\setstretch{1.1}
+\def\自己紹介１行の高さ{5.4}
+%----------------
+% 自己紹介書
+%----------------
+\SetPos(0,0) {
+	\Put(0,-1){\makebox(\枠の幅,5)[t]{\Large \bf 自\hspace{3mm}己\hspace{3mm}紹\hspace{3mm}介\hspace{3mm}書}}
 }
 %----------------
 % 志望の動機など
 %----------------
-\SetPos(0,115) {
-	\def\枠の高さ{51.0}
-	\def\見出しの高さ{5}
-	\def\その他の高さ{10}
-	\def\その他の幅{37}
+\SetPos(0,0) {
+	\def\枠の高さ{49.8}
+	\def\行の幅{132.5}
 	\ThickBox(\枠の幅,\枠の高さ)
-	\Put(0,\見出しの高さ){\makebox(103,\見出しの高さ)[l]{\scriptsize \hspace{1mm}志望の動機、特技、好きな学科、アピールポイントなど}}
-	\Put(2,39.0){\makebox(141.5,31.0)[t]{\parbox{141.5 mm}{\normalsize \@志望の動機}}}
-	\Put(0,41.0){\line(1,0){\枠の幅}}
-	% 小見出し%
-	\def\見出しの高さ{4}
-	\def\x{0}
-	\Put(\x,  45.0){\makebox(\その他の幅,\見出しの高さ)[l]{\scriptsize \hspace{1mm}通勤時間}}
-	\Add{\x}{\その他の幅}{\x}
-	\Put(\x, 51.0){\line(0,1){\その他の高さ}}
-	\Put(\x, 45.0){\makebox(\その他の幅,\見出しの高さ)[l]{\scriptsize \hspace{1mm}扶養家族数（配偶者を除く）}}
-	\Add{\x}{\その他の幅}{\x}
-	\Put(\x, 51.0){\line(0,1){\その他の高さ}}
-	\Put(\x, 45.0){\makebox(\その他の幅,\見出しの高さ)[l]{\scriptsize \hspace{1mm}配偶者}}
-	\Add{\x}{\その他の幅}{\x}
-	\Put(\x, 51.0){\line(0,1){\その他の高さ}}
-	\Put(\x,45.0){\makebox(\その他の幅,\見出しの高さ)[l]{\scriptsize \hspace{1mm}配偶者の扶養義務}}
-	%
-	\def\h{6}
-	\def\y{50}
-	\def\x{0}
-	\Put(\x,\y){\makebox(\その他の幅,\h)[c]{\normalsize \@通勤時間}}
-	\Add{\x}{\その他の幅}{\x}
-	\if\@扶養家族数\empty\else
-		\Put(\x,\y){\makebox(\その他の幅,\h)[c]{\normalsize \@扶養家族数 人}}
-	\fi
-	\Add{\x}{\その他の幅}{\x}
-	\Put(\x,\y){\makebox(\その他の幅,\h)[c]{\normalsize \@配偶者}}
-	\Add{\x}{\その他の幅}{\x}
-	\Put(\x,\y){\makebox(\その他の幅,\h)[c]{\normalsize \@配偶者の扶養義務}}
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize 志望動機}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@志望の動機}}}
+	\Put(17,0){\line(0,-1){\枠の高さ}}
+	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){8}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
 }
 %----------------
-% 本人希望記入欄
+% 卒業研究，ゼミナールなど
 %----------------
-%\SetPos(0,146.0) {
-\SetPos(0,167.5) {
-	\def\枠の高さ{52}
-	\def\見出しの高さ{6}
+\SetPos(0,55.5) {
+	\def\枠の高さ{33.6}
+	\def\行の幅{132.5}
 	\ThickBox(\枠の幅,\枠の高さ)
-	\Put(0,\見出しの高さ){\makebox(\枠の幅,\見出しの高さ)[l]{\scriptsize \hspace{1mm}本人希望記入欄（特に給料・職種・勤務時間・勤務地・その他についての希望があれば記入）}}
-	\Put(2,50){\makebox(141.5,42)[t]{\parbox{141.5 mm}{\normalsize \@本人希望記入欄}}}
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize \begin{tabular}{l}卒業研究\\ゼミナール\\など\end{tabular}}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@卒業研究}}}
+	\Put(17,0){\line(0,-1){\枠の高さ}}
+	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){5}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
 }
-\SetPos(0,220) {
-	\def\見出しの高さ{5}
-	\Put(76,\見出しの高さ){\makebox(76,\見出しの高さ)[r]{\scriptsize\it \@サイン}}
+%----------------
+% 得意分野，得意科目
+%----------------
+\SetPos(0,94.5) {
+	\def\枠の高さ{22.8}
+	\def\行の幅{132.5}
+	\ThickBox(\枠の幅,\枠の高さ)
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize \begin{tabular}{l}得意分野\\得意科目\end{tabular}}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@得意分野}}}
+	\Put(17,0){\line(0,-1){\枠の高さ}}
+	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){3}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
 }
+%----------------
+% 趣味
+%----------------
+\SetPos(0,123) {
+	\def\枠の高さ{33.6}
+	\def\行の幅{132.5}
+	\ThickBox(\枠の幅,\枠の高さ)
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize \begin{tabular}{l}特技\\趣味など\end{tabular}}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@趣味}}}
+	\Put(17,0){\line(0,-1){\枠の高さ}}
+	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){5}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
+}
+%----------------
+% 自己ＰＲ
+%----------------
+\SetPos(0,162) {
+	\def\枠の高さ{55.2}
+	\def\行の幅{132.5}
+	\ThickBox(\枠の幅,\枠の高さ)
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize 自己ＰＲ}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@自己ＰＲ}}}
+	\Put(17,0){\line(0,-1){\枠の高さ}}
+	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){9}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
+}
+
+% \SetPos(0,220) {
+% 	\def\見出しの高さ{5}
+% 	\Put(76,\見出しの高さ){\makebox(76,\見出しの高さ)[r]{\fontsize{11}{14}\selectfont\it \サイン}}
+% }
 \end{picture}
 }
 %----------------------------------------------------------------------------
