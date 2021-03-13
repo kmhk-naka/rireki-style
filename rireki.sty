@@ -491,7 +491,7 @@
 \begin{picture}(\width,\height)		% B5 = (182x257mm)
 
 \setstretch{1.1}
-\def\自己紹介１行の高さ{5.4}
+\def\自己紹介１行の高さ{5.8}
 %----------------
 % 自己紹介書
 %----------------
@@ -502,66 +502,66 @@
 % 志望の動機など
 %----------------
 \SetPos(0,0) {
-	\def\枠の高さ{49.8}
+	\def\枠の高さ{47.9}
 	\def\行の幅{132.5}
 	\ThickBox(\枠の幅,\枠の高さ)
-	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize 志望動機}}
-	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@志望の動機}}}
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\small 志望動機}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{14}{15}\selectfont \@志望の動機}}}
 	\Put(17,0){\line(0,-1){\枠の高さ}}
-	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){8}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
+	\MultiPut(17,7.3)(0,-\自己紹介１行の高さ){7}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
 }
 %----------------
 % 卒業研究，ゼミナールなど
 %----------------
 \SetPos(0,55.5) {
-	\def\枠の高さ{33.6}
+	\def\枠の高さ{30.5}
 	\def\行の幅{132.5}
 	\ThickBox(\枠の幅,\枠の高さ)
-	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize \begin{tabular}{l}卒業研究\\ゼミナール\\など\end{tabular}}}
-	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@卒業研究}}}
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\small\renewcommand{\arraystretch}{0.6} \begin{tabular}{l}卒業研究\\ゼミナール\\など\end{tabular}}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{14}{15}\selectfont \@卒業研究}}}
 	\Put(17,0){\line(0,-1){\枠の高さ}}
-	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){5}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
+	\MultiPut(17,7.3)(0,-\自己紹介１行の高さ){4}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
 }
 %----------------
 % 得意分野，得意科目
 %----------------
-\SetPos(0,94.5) {
-	\def\枠の高さ{22.8}
+\SetPos(0,93.0) {
+	\def\枠の高さ{24.7}
 	\def\行の幅{132.5}
 	\ThickBox(\枠の幅,\枠の高さ)
-	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize \begin{tabular}{l}得意分野\\得意科目\end{tabular}}}
-	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@得意分野}}}
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\small\renewcommand{\arraystretch}{0.6} \begin{tabular}{l}得意分野\\得意科目\end{tabular}}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{14}{15}\selectfont \@得意分野}}}
 	\Put(17,0){\line(0,-1){\枠の高さ}}
-	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){3}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
+	\MultiPut(17,7.3)(0,-\自己紹介１行の高さ){3}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
 }
 %----------------
 % 趣味
 %----------------
-\SetPos(0,122.5) {
-	\def\枠の高さ{28.2}
+\SetPos(0,124.5) {
+	\def\枠の高さ{24.7}
 	\def\行の幅{132.5}
 	\ThickBox(\枠の幅,\枠の高さ)
-	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize \begin{tabular}{l}特技\\趣味など\end{tabular}}}
-	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@趣味}}}
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\small\renewcommand{\arraystretch}{0.6} \begin{tabular}{l}特技\\趣味など\end{tabular}}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{14}{15}\selectfont \@趣味}}}
 	\Put(17,0){\line(0,-1){\枠の高さ}}
-	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){4}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
+	\MultiPut(17,7.3)(0,-\自己紹介１行の高さ){3}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
 }
 %----------------
 % 自己ＰＲ
 %----------------
 \SetPos(0,156.3) {
-	\def\枠の高さ{60.6}
+	\def\枠の高さ{65.3}
 	\def\行の幅{132.5}
 	\ThickBox(\枠の幅,\枠の高さ)
-	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\scriptsize 自己ＰＲ}}
-	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{11}{14}\selectfont \@自己ＰＲ}}}
+	\Put(0,\枠の高さ){\makebox(17,\枠の高さ)[c]{\small 自己ＰＲ}}
+	\Put(17,2){\makebox(132.5,0)[t]{\parbox{126.5 mm}{\fontsize{14}{15}\selectfont \@自己ＰＲ}}}
 	\Put(17,0){\line(0,-1){\枠の高さ}}
-	\MultiPut(17,6.0)(0,-\自己紹介１行の高さ){10}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
+	\MultiPut(17,7.3)(0,-\自己紹介１行の高さ){10}{\dashbox{.5}(\行の幅,0)} %% 罫線を引く
 }
 
 % \SetPos(0,220) {
 % 	\def\見出しの高さ{5}
-% 	\Put(76,\見出しの高さ){\makebox(76,\見出しの高さ)[r]{\fontsize{11}{14}\selectfont\it \サイン}}
+% 	\Put(76,\見出しの高さ){\makebox(76,\見出しの高さ)[r]{\fontsize{14}{15}\selectfont\it \サイン}}
 % }
 \end{picture}
 }
