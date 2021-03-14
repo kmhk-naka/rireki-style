@@ -1,0 +1,9 @@
+# private infomation
+personal_info.tex
+
+# images
+*.jpg
+*.png
+
+# PDF
+*.pdf
